@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adesh Kumar | Portfolio</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <style>
+    .fade-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-white font-sans min-h-screen">
+  <!-- Navbar -->
+  <header class="bg-white dark:bg-slate-800 shadow-md fixed top-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-bold text-lg">Adesh Kumar</h1>
+      <nav class="space-x-4 text-sm font-semibold">
+        <a href="#home" class="hover:underline">Home</a>
+        <a href="#skills" class="hover:underline">Skills</a>
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+      <button id="themeToggle" class="ml-4 p-2 rounded-full bg-slate-200 dark:bg-slate-700">
+        <i id="moonIcon" data-lucide="moon"></i>
+        <i id="sunIcon" data-lucide="sun" class="hidden"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main id="home" class="pt-24">
+
+    <!-- Hero -->
+    <section class="relative bg-gradient-to-br from-indigo-700 via-purple-700 to-pink-700 text-white px-6 py-20 text-center">
+      <img src="Adeshimg.jpg" alt="Adesh Kumar" class="w-32 h-60 rounded-xl mx-auto shadow-lg border-4 border-white object-cover" />
+      <h2 class="text-4xl md:text-6xl font-extrabold mt-4">Adesh Kumar</h2>
+      <p class="text-xl mt-2 h-8"><span id="typed"></span></p>
+      <div class="mt-5 flex justify-center gap-4">
+        <a href="Adii_resumex.pdf" download class="bg-white text-indigo-700 px-4 py-2 rounded-full font-semibold shadow inline-flex items-center gap-2 hover:scale-105 transition">
+          <i data-lucide="file-text" class="w-4 h-4"></i> Resume
+        </a>
+        <a href="#contact" class="border border-white text-white px-4 py-2 rounded-full hover:bg-white/20 transition">Contact Me</a>
+      </div>
+    </section>
+
+    <!-- Skills, Stats, Experience, Education, Certifications -->
+    <section id="skills" class="px-6 py-20 max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <!-- Skills -->
+      <div class="fade-section bg-white dark:bg-slate-800 p-6 rounded-xl shadow">
+        <h3 class="text-xl font-bold mb-2">Skills</h3>
+        <ul class="list-disc text-sm ml-5 space-y-3">
+          <li><span class="font-semibold">C++, Java, Python</span></li>
+          <li><span class="font-semibold">Problem Solving &amp; Competitive Programming</span></li>
+          <li><span class="font-semibold">Data Structures &amp; Algorithms</span></li>
+          <li><span class="font-semibold">HTML, Tailwind CSS, JavaScript</span></li>
+          <li><span class="font-semibold">PHP, MySQL</span></li>
+          <li><span class="font-semibold">Java Swing, JavaFX</span></li>
+          <li><span class="font-semibold">Operating System</span></li>
+          <li><span class="font-semibold">Computer Networking</span></li>
+          <li><span class="font-semibold">Computer Architecture</span></li>
+          <li><span class="font-semibold">Git &amp; GitHub</span></li>
+        </ul>
+      </div>
+
+      <!-- Experience -->
+      <div class="fade-section bg-white dark:bg-slate-800 p-6 rounded-xl shadow">
+        <h3 class="text-xl font-bold mb-2">Experience</h3>
+        <p class="text-sm leading-6">
+          <strong>Web Content Uploading Intern</strong><br>
+          <span class="text-indigo-500">Gao Tek Inc.</span><br>
+          <em>Dec 2024 – Mar 2025</em><br>
+          Responsible for uploading and managing web content, ensuring accuracy and consistency across web pages. Collaborated with the content team to maintain high-quality digital standards.
+        </p>
+      </div>
+
+      <!-- Education -->
+      <div class="fade-section bg-white dark:bg-slate-800 p-6 rounded-xl shadow">
+        <h3 class="text-xl font-bold mb-2">Education</h3>
+        <ul class="text-sm list-disc ml-5 space-y-2">
+          <li><strong>B.Tech in CSE</strong>, Lovely Professional University (2023–2027)<br>Pursuing a Computer Science degree with a focus on software development, data structures, and algorithms.</li>
+          <li><strong>12th (CBSE)</strong>, Praxis Vidyapeeth, Bahraich (2020–2022)<br>Completed 12th Board with a focus on PCM and a strong foundation in scientific principles.</li>
+        </ul>
+      </div>
+
+      <!-- GitHub Stats -->
+      <div class="fade-section bg-white dark:bg-slate-800 p-6 rounded-xl shadow lg:col-span-2">
+        <h3 class="text-xl font-bold mb-4">GitHub Stats</h3>
+        <div class="space-y-4">
+          <img id="githubStats" src="https://github-readme-stats.vercel.app/api?username=AdeshKumar07&show_icons=true&theme=radical" class="rounded-md mx-auto" alt="GitHub Stats" />
+          <img id="githubStreak" src="https://streak-stats.demolab.com?user=AdeshKumar07&theme=radical&border_radius=6" class="rounded-md mx-auto" alt="GitHub Streak" />
+          <img id="githubLangs" src="https://github-readme-stats.vercel.app/api/top-langs/?username=AdeshKumar07&layout=compact&theme=radical" class="rounded-md mx-auto" alt="Top Languages" />
+        </div>
+      </div>
+
+      <!-- LeetCode Stats -->
+      <div class="fade-section bg-white dark:bg-slate-800 p-6 rounded-xl shadow lg:col-span-3">
+        <h3 class="text-xl font-bold mb-4">LeetCode Stats</h3>
+        <div class="flex flex-col items-center space-y-4">
+          <img id="leetcodeStats" src="https://leetcard.jacoblin.cool/adeshkumarchaudhary?theme=dark&font=Roboto&ext=activity" class="rounded-md" alt="LeetCode Stats" />
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="fade-section bg-white dark:bg-slate-800 p-6 rounded-xl shadow lg:col-span-3">
+        <h3 class="text-xl font-bold mb-2">Certifications</h3>
+        <ul class="text-sm list-disc ml-5 space-y-2">
+          <li><a href="https://www.freecodecamp.org/certification/fccec6c2c52-f29b-4b20-a058-9308ac7ad664/responsive-web-design" class="text-indigo-600 hover:underline" target="_self">Responsive Web Design (FreeCodeCamp)</a></li>
+          <li><a href="https://olympus.mygreatlearning.com/courses/61717/certificate?pb_id=581" class="text-indigo-600 hover:underline" target="_self">Introduction to Artificial Intelligence (Great Learning)</a></li>
+          <li><a href="https://www.linkedin.com/in/adesh-kumar-chaudhary-68a88a25b/details/certifications/1737839153644/" class="text-indigo-600 hover:underline" target="_self">Data Science &amp; Algorithm (LinkedIn Learning)</a></li>
+          <li><a href="https://www.linkedin.com/in/adesh-kumar-chaudhary-68a88a25b/details/certifications/1737839057741/" class="text-indigo-600 hover:underline" target="_self">Object Oriented Programming (LinkedIn Learning)</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="px-6 py-16 max-w-6xl mx-auto space-y-10">
+      <h2 class="text-3xl font-bold text-center fade-section">Featured Projects</h2>
+      <div class="grid lg:grid-cols-2 gap-8">
+
+        <!-- CPU Scheduler -->
+        <div class="fade-section bg-white dark:bg-slate-800 rounded-xl shadow p-6">
+          <h3 class="text-2xl font-semibold text-indigo-600 mb-2">CPU Scheduler Simulator</h3>
+          <p class="text-sm leading-6 mb-3">Java tool that visualizes FCFS, SJF, Round Robin, and Priority Scheduling and automatic turnaround/waiting-time calculations.</p>
+          <ul class="text-sm list-disc ml-5 mb-3">
+            <li>Interactive process editor</li>
+            <li>Real-time chart updates</li>
+            <li>Export results to CSV</li>
+          </ul>
+          <a href="https://github.com/AdeshKumar07/OS-project-" class="text-indigo-600 inline-flex items-center gap-1 hover:underline">
+            View Repository <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Recipe Sharing Platform -->
+        <div class="fade-section bg-white dark:bg-slate-800 rounded-xl shadow p-6">
+          <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Recipe Sharing Platform</h3>
+          <p class="text-sm leading-6 mb-3">PHP + MySQL web app where users upload, preview, and search recipes. Includes dark mode, image preview, and tag-based filters.</p>
+          <ul class="text-sm list-disc ml-5 mb-3">
+            <li>Secure image uploads</li>
+            <li>Dynamic search &amp; filter</li>
+            <li>Like &amp; comment system</li>
+          </ul>
+          <a href="https://github.com/AdeshKumar07/Recipe-sharing-Community-" class="text-indigo-600 inline-flex items-center gap-1 hover:underline">
+            Live Demo <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Restaurant App -->
+        <div class="fade-section bg-white dark:bg-slate-800 rounded-xl shadow p-6">
+          <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Restaurant Reservation App</h3>
+          <p class="text-sm leading-6 mb-3">Desktop Java application to manage table bookings, track availability, and print receipts.</p>
+          <ul class="text-sm list-disc ml-5 mb-3">
+            <li>Drag-and-drop layout</li>
+            <li>Revenue summary reports</li>
+            <li>Customer records</li>
+          </ul>
+          <a href="#" class="text-indigo-600 inline-flex items-center gap-1 hover:underline">
+            Project Docs <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- LeetCode Bank -->
+        <div class="fade-section bg-white dark:bg-slate-800 rounded-xl shadow p-6">
+          <h3 class="text-2xl font-semibold text-indigo-600 mb-2">LeetCode Solution Bank</h3>
+          <p class="text-sm leading-6 mb-3">Repository of 300+ solved LeetCode problems in C++ &amp; Java. Well-commented and organized by tags.</p>
+          <ul class="text-sm list-disc ml-5 mb-3">
+            <li>Daily practice streak</li>
+            <li>Topic-wise folder structure</li>
+            <li>Regular updates</li>
+          </ul>
+          <a href="https://github.com/AdeshKumar07" class="text-indigo-600 inline-flex items-center gap-1 hover:underline">
+            Visit GitHub <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="px-6 py-20 max-w-4xl mx-auto fade-section">
+      <h2 class="text-3xl font-bold text-center mb-8">Get In Touch</h2>
+      <div class="space-y-6 text-sm md:text-base">
+      <div class="flex items-center gap-3">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        <span>adeshak0707@gmail.com</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <i data-lucide="github" class="w-5 h-5"></i>
+        <a href="https://github.com/AdeshKumar07" target="_blank" class="underline">github.com/AdeshKumar07</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <i data-lucide="linkedin" class="w-5 h-5"></i>
+        <a href="https://linkedin.com/in/adesh-kumar-chaudhary-68a88a25b" target="_blank" class="underline">LinkedIn Profile</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <i data-lucide="activity" class="w-5 h-5"></i>
+        <a href="https://leetcode.com/u/adeshkumarchaudhary/" target="_blank" class="underline">LeetCode Profile</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <i data-lucide="phone" class="w-5 h-5"></i>
+        <span>+91 8881706311</span>
+      </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-xs text-slate-500 dark:text-slate-400">
+    © 2025 Adesh Kumar | Built with HTML + Tailwind
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    lucide.createIcons();
+
+    new Typed('#typed', {
+      strings: ['Developer', 'Engineer', 'Problem Solver', 'Open Source Contributor'],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 1500,
+      loop: true,
+    });
+
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const moonIcon = document.getElementById('moonIcon');
+    const sunIcon = document.getElementById('sunIcon');
+
+    function updateIcons(isDark) {
+      moonIcon.classList.toggle('hidden', isDark);
+      sunIcon.classList.toggle('hidden', !isDark);
+    }
+
+    function applyStoredTheme() {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = stored ? stored === 'dark' : prefersDark;
+      html.classList.toggle('dark', isDark);
+      updateIcons(isDark);
+    }
+
+    applyStoredTheme();
+
+    toggle.addEventListener('click', () => {
+      const willBeDark = !html.classList.contains('dark');
+      html.classList.toggle('dark', willBeDark);
+      localStorage.setItem('theme', willBeDark ? 'dark' : 'light');
+      updateIcons(willBeDark);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+
+    // Live Stats Refresh
+    window.addEventListener('load', () => {
+      const cb = `&cb=${Date.now()}`;
+      document.getElementById('githubStats').src += cb;
+      document.getElementById('githubStreak').src += cb;
+      document.getElementById('githubLangs').src += cb;
+      document.getElementById('leetcodeStats').src += cb;
+    });
+  </script>
+</body>
+</html>
