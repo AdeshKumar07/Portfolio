@@ -609,9 +609,15 @@
     var local=(parseInt(localStorage.getItem(lsKey))||0)+1;
     localStorage.setItem(lsKey,local);
 
-    // Secret shortcut: Ctrl + Shift + A
+    // Secret shortcut: press ~ three times quickly
+    var _tcount=0, _ttimer=null;
     document.addEventListener('keydown',function(e){
-      if(e.ctrlKey&&e.shiftKey&&(e.key==='A'||e.key==='a')){e.preventDefault();toggle();}
+      if(e.key==='`'||e.key==='~'){
+        _tcount++;
+        clearTimeout(_ttimer);
+        if(_tcount>=3){_tcount=0;toggle();}
+        else{_ttimer=setTimeout(function(){_tcount=0;},600);}
+      }
     });
 
     function toggle(){
