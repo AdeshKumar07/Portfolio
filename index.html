@@ -323,17 +323,58 @@
     ::-webkit-scrollbar-thumb { background:rgba(168,85,247,.4); border-radius:3px; }
 
     /* ── Responsive ── */
-    @media (max-width:900px) {
-      .hero { flex-direction:column-reverse; padding:6rem 6% 3rem; text-align:center; gap:2.5rem; }
-      .hero-left { max-width:100%; }
-      .hero-bio { margin-left:auto; margin-right:auto; }
-      .cta-row,.socials,.stats-row { justify-content:center; }
-      .img-wrap { width:230px; height:270px; }
+
+    /* Hide custom cursor on touch / no-hover devices */
+    @media (hover: none), (pointer: coarse) {
+      #cur-dot, #cur-ring { display:none !important; }
+      *, *::before, *::after { cursor:auto !important; }
     }
-    @media (max-width:560px) {
+
+    /* ── Tablet (≤ 900px) ── */
+    @media (max-width:900px) {
+      .hero { flex-direction:column-reverse; padding:6rem 6% 3rem; text-align:center; gap:2rem; min-height:auto; }
+      .hero-left { max-width:100%; }
+      .hero-bio { margin-left:auto; margin-right:auto; max-width:100%; }
+      .cta-row,.socials,.stats-row { justify-content:center; }
+      .hero-right { width:100%; align-items:center; }
+      .img-wrap { width:220px; }
+      .img-wrap img { height:265px; }
+      .pills { max-width:320px; }
+    }
+
+    /* ── Mobile (≤ 640px) ── */
+    @media (max-width:640px) {
       nav { padding:.85rem 1.2rem; }
       .nav-link { display:none; }
-      .hero { padding:5.5rem 4% 2.5rem; }
+      .hero { padding:5.5rem 5% 2.5rem; gap:1.8rem; }
+      .stats-row { gap:1.5rem; flex-wrap:wrap; }
+      .stat-num { font-size:1.45rem; }
+      .badge { font-size:.74rem; }
+      .a1,.a2,.a3 { opacity:.15; }
+    }
+
+    /* ── Small phones (≤ 400px) ── */
+    @media (max-width:400px) {
+      nav { padding:.75rem 1rem; }
+      .nav-logo { font-size:1.1rem; }
+      .hero { padding:5rem 4% 2rem; gap:1.5rem; }
+      .hero-name { letter-spacing:-1.5px; }
+      .img-wrap { width:178px; }
+      .img-wrap img { height:218px; }
+      .cta-row { flex-direction:column; align-items:stretch; }
+      .btn-primary, .btn-outline { justify-content:center; width:100%; }
+      .stats-row { gap:.9rem; }
+      .stat-num { font-size:1.25rem; }
+      .pills { max-width:100%; }
+      .soc { width:40px; height:40px; font-size:1rem; }
+      .hero-role { font-size:1rem; }
+    }
+
+    /* ── Tiny phones (≤ 320px) ── */
+    @media (max-width:320px) {
+      .hero-name { font-size:clamp(2rem,8vw,2.6rem); }
+      .img-wrap { width:150px; }
+      .img-wrap img { height:185px; }
     }
   </style>
 </head>
@@ -529,6 +570,80 @@
         requestAnimationFrame(frame);
       })();
     })();
+  </script>
+
+  <!-- ╬ Private Visitor Counter — Ctrl+Shift+A to reveal ╬ -->
+  <script>
+  (function(){
+    var NS='adesh-portfolio-2026', KEY='home';
+    var apiCount=null;
+
+    // Increment global counter on every page load
+    fetch('https://api.countapi.xyz/hit/'+NS+'/'+KEY)
+      .then(function(r){return r.json();})
+      .then(function(d){apiCount=d.value;})
+      .catch(function(){});
+
+    // Local device-specific count (persists across sessions on this device)
+    var lsKey='_ak_vc_'+KEY;
+    var local=(parseInt(localStorage.getItem(lsKey))||0)+1;
+    localStorage.setItem(lsKey,local);
+
+    // Secret shortcut: Ctrl + Shift + A
+    document.addEventListener('keydown',function(e){
+      if(e.ctrlKey&&e.shiftKey&&(e.key==='A'||e.key==='a')){e.preventDefault();toggle();}
+    });
+
+    function toggle(){
+      var p=document.getElementById('_akp');
+      if(p){p.remove();return;}
+      if(!document.getElementById('_ak_kf')){
+        var s=document.createElement('style');
+        s.id='_ak_kf';
+        s.textContent='@keyframes _akfade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}';
+        document.head.appendChild(s);
+      }
+      p=document.createElement('div');
+      p.id='_akp';
+      p.style.cssText='position:fixed;bottom:22px;right:22px;z-index:2147483647;background:rgba(5,7,20,.97);border:1px solid rgba(99,102,241,.45);border-radius:18px;padding:18px 20px;min-width:230px;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 24px 64px rgba(0,0,0,.65),0 0 0 1px rgba(99,102,241,.12);font-family:inherit;color:#e2e8f0;font-size:13px;animation:_akfade .3s ease;line-height:1.4';
+      var api=apiCount!==null?apiCount:'<span id="_ak_api" style="font-size:24px;font-weight:800;color:#818cf8">…</span>';
+      var apiBlock=apiCount!==null?'<div style="font-size:24px;font-weight:800;color:#818cf8">'+apiCount+'</div>':api;
+      p.innerHTML=
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
+          +'<div style="display:flex;align-items:center;gap:8px">'
+            +'<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;flex-shrink:0"></span>'
+            +'<b style="font-size:13px;background:linear-gradient(90deg,#818cf8,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Visitor Analytics</b>'
+          +'</div>'
+          +'<button onclick="document.getElementById(\"_akp\").remove()" style="background:rgba(255,255,255,.1);border:none;color:#94a3b8;border-radius:8px;width:22px;height:22px;font-size:16px;cursor:auto;display:flex;align-items:center;justify-content:center;flex-shrink:0">×</button>'
+        +'</div>'
+        +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">'
+          +'<div style="background:rgba(99,102,241,.13);border:1px solid rgba(99,102,241,.22);border-radius:10px;padding:10px;text-align:center">'
+            +apiBlock
+            +'<div style="font-size:10px;color:#475569;margin-top:3px">Total Visits</div>'
+          +'</div>'
+          +'<div style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22);border-radius:10px;padding:10px;text-align:center">'
+            +'<div style="font-size:24px;font-weight:800;color:#34d399">'+local+'</div>'
+            +'<div style="font-size:10px;color:#475569;margin-top:3px">This Device</div>'
+          +'</div>'
+        +'</div>'
+        +'<div style="font-size:10px;color:#1e293b;background:rgba(99,102,241,.07);border-radius:8px;padding:7px 10px;text-align:center">🔒 Private · Ctrl+Shift+A to toggle · hides in 20s</div>';
+      document.body.appendChild(p);
+      // If API count not yet resolved, fetch it on-demand and update
+      if(apiCount===null){
+        fetch('https://api.countapi.xyz/get/'+NS+'/'+KEY)
+          .then(function(r){return r.json();})
+          .then(function(d){
+            var el=document.getElementById('_ak_api');
+            if(el)el.textContent=d.value;
+            else if(document.getElementById('_akp')){
+              var c=p.querySelector('[style*="818cf8"]');
+              if(c)c.textContent=d.value;
+            }
+          }).catch(function(){var el=document.getElementById('_ak_api');if(el)el.textContent='?';});
+      }
+      setTimeout(function(){var el=document.getElementById('_akp');if(el)el.remove();},20000);
+    }
+  })();
   </script>
 
 </body>
